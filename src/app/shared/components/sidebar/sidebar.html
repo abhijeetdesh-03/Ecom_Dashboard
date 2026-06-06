@@ -8,12 +8,23 @@
 
     <ul class="nav flex-column sidebar-menu">
 
+        <li class="menu-header">Overview</li>
+
         <li class="nav-item">
             <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
                 <i class="ri-dashboard-line"></i>
                 <span>Dashboard</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a routerLink="/analytics" routerLinkActive="active" class="nav-link">
+                <i class="ri-bar-chart-box-line"></i>
+                <span>Analytics</span>
+            </a>
+        </li>
+
+        <li class="menu-header">Store</li>
 
         <li class="nav-item">
             <a routerLink="/orders" routerLinkActive="active" class="nav-link">
@@ -37,23 +48,18 @@
         </li>
 
         <li class="nav-item">
-            <a routerLink="/customers" routerLinkActive="active" class="nav-link">
-                <i class="ri-group-line"></i>
-                <span>Customers</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
             <a routerLink="/inventory" routerLinkActive="active" class="nav-link">
                 <i class="ri-store-2-line"></i>
                 <span>Inventory</span>
             </a>
         </li>
 
+        <li class="menu-header">CRM & Marketing</li>
+
         <li class="nav-item">
-            <a routerLink="/analytics" routerLinkActive="active" class="nav-link">
-                <i class="ri-bar-chart-box-line"></i>
-                <span>Analytics</span>
+            <a routerLink="/customers" routerLinkActive="active" class="nav-link">
+                <i class="ri-group-line"></i>
+                <span>Customers</span>
             </a>
         </li>
 
@@ -70,6 +76,8 @@
                 <span>Coupons & Offers</span>
             </a>
         </li>
+
+        <li class="menu-header">System</li>
 
         <li class="nav-item">
             <a routerLink="/settings" routerLinkActive="active" class="nav-link">
