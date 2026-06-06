@@ -14,7 +14,7 @@
     </section>
 
     <!-- ALL ORDERS TABLE -->
-    <section class="table mb-4">
+    <section class="orders-table-wrapper mb-4">
         <app-table title="All Orders" subtitle="Manage and track all store orders" [columns]="orderColumns"
             [data]="orderData" [showSearch]="true" [showFilter]="true" [showExport]="true" [showPagination]="true"
             [filterOptions]="['All','Delivered','Pending','Cancelled']" exportText="Export CSV" [actions]="actions">

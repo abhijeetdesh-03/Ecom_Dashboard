@@ -10,33 +10,39 @@
     position: relative;
     padding: 18px;
     border-radius: 16px;
-    background: #fff;
-    border: 1px solid #e9ecef;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
-    transition: all 0.2s ease;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    color: var(--text-primary);
+    transition: var(--theme-transition);
 
     &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--card-shadow-hover);
+        background: var(--card-hover-bg);
     }
 
     h6 {
         font-size: 13px;
-        color: #64748b;
+        color: var(--text-secondary);
         margin-bottom: 6px;
         font-weight: 500;
+        transition: var(--theme-transition);
     }
 
     h2 {
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 4px;
-        color: #0f172a;
+        color: var(--text-primary);
+        transition: var(--theme-transition);
     }
 
     p {
         margin: 0;
         font-size: 13px;
+        color: var(--text-secondary);
+        transition: var(--theme-transition);
     }
 }
 
@@ -79,8 +85,9 @@
     color: white !important;
 
     h6,
+    h2,
     p {
-        color: rgba(255, 255, 255, .9);
+        color: rgba(255, 255, 255, .9) !important;
     }
 }
 
@@ -103,16 +110,17 @@
 
 .stats-card-layout {
     height: 100%;
-    background: white;
+    background: var(--bg-secondary);
     padding: 18px;
     border-radius: 16px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    color: var(--text-primary);
+    transition: var(--theme-transition);
 
     &:hover {
         transform: translateY(-6px);
-        border-color: var(--glow-color, #e5e7eb);
+        border-color: var(--glow-color, var(--border-color));
         box-shadow: 0 12px 24px -10px var(--glow-color, rgba(0, 0, 0, 0.15));
     }
 
@@ -121,16 +129,18 @@
     }
 
     h6 {
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 13px;
         margin-bottom: 6px;
         font-weight: 500;
+        transition: var(--theme-transition);
     }
 
     h2 {
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 4px;
-        color: #0f172a;
+        color: var(--text-primary);
+        transition: var(--theme-transition);
     }
 }

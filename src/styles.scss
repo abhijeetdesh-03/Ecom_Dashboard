@@ -1,1 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  --border-color: #e2e8f0;
+  
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-text: #0f172a;
+  
+  --sidebar-bg: #090d16;
+  --sidebar-text: rgba(255, 255, 255, 0.65);
+  --sidebar-text-hover: #ffffff;
+  --sidebar-active-bg: rgba(99, 102, 241, 0.15);
+  --sidebar-active-text: #818cf8;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+
+  --card-hover-bg: #ffffff;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.06);
+  
+  --table-th-bg: #f8fafc;
+  --table-footer-bg: #f8fafc;
+  --table-row-hover: #f8fafc;
+  
+  --badge-success-bg: #dcfce7;
+  --badge-success-text: #16a34a;
+  --badge-primary-bg: #e0e7ff;
+  --badge-primary-text: #4f46e5;
+  --badge-warning-bg: #fef3c7;
+  --badge-warning-text: #ca8a04;
+  --badge-danger-bg: #fee2e2;
+  --badge-danger-text: #dc2626;
+
+  --theme-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                      color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #121824;
+  --bg-tertiary: #1e293b;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --border-color: #1e293b;
+  
+  --input-bg: #1e293b;
+  --input-border: #334155;
+  --input-text: #f8fafc;
+  
+  --sidebar-bg: #090d16; /* Keep original dark sidebar background or adapt: #0d131f */
+  --sidebar-text: rgba(255, 255, 255, 0.65);
+  --sidebar-text-hover: #ffffff;
+  --sidebar-active-bg: rgba(99, 102, 241, 0.15);
+  --sidebar-active-text: #818cf8;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+
+  --card-hover-bg: #161f30;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.3);
+  
+  --table-th-bg: #1a2333;
+  --table-footer-bg: #121824;
+  --table-row-hover: #1e293b;
+  
+  --badge-success-bg: rgba(16, 185, 129, 0.15);
+  --badge-success-text: #34d399;
+  --badge-primary-bg: rgba(79, 70, 229, 0.15);
+  --badge-primary-text: #818cf8;
+  --badge-warning-bg: rgba(245, 158, 11, 0.15);
+  --badge-warning-text: #fbbf24;
+  --badge-danger-bg: rgba(239, 68, 68, 0.15);
+  --badge-danger-text: #f87171;
+}
+
+/* Global Overrides */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+}
+
+/* Form Controls (Bootstrap & Native overrides) */
+.form-control, 
+.form-select, 
+select, 
+input[type="text"], 
+input[type="number"], 
+input[type="email"], 
+input[type="password"], 
+textarea {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--input-text) !important;
+  transition: var(--theme-transition);
+}
+
+.form-control:focus, 
+.form-select:focus, 
+select:focus, 
+input:focus, 
+textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15) !important;
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

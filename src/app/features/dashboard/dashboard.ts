@@ -1,10 +1,11 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, effect } from '@angular/core';
 import { SharedCards } from '../../shared/models/shared-cards';
 import { analyticsCards } from '../../shared/data/analytics';
 import { statsCards } from '../../shared/data/dashboard';
 import { RECENT_ORDERS_TABLE } from '../../shared/data/recent_orders';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { ThemeService } from '../../shared/theme.service';
 
 
 @Component({
@@ -19,6 +20,13 @@ export class Dashboard implements OnInit {
   currentDate: string = '';
   isExporting = false;
   isHorizontalBar = false;
+
+  constructor(private themeService: ThemeService) {
+    effect(() => {
+      const isDark = this.themeService.isDark();
+      this.updateChartThemes(isDark);
+    });
+  }
 
   ngOnInit() {
     this.currentDate = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -270,6 +278,22 @@ export class Dashboard implements OnInit {
           horizontal: horizontal
         }
       }
+    };
+  }
+
+  updateChartThemes(isDark: boolean) {
+    const mode = isDark ? 'dark' : 'light';
+    this.salesChart = {
+      ...this.salesChart,
+      theme: { mode }
+    };
+    this.orderStatusChart = {
+      ...this.orderStatusChart,
+      theme: { mode }
+    };
+    this.topProductsChart = {
+      ...this.topProductsChart,
+      theme: { mode }
     };
   }
 }

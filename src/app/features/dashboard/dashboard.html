@@ -54,7 +54,7 @@
 
                         <apx-chart [series]="salesChart.series" [chart]="salesChart.chart" [xaxis]="salesChart.xaxis"
                             [stroke]="salesChart.stroke" [fill]="salesChart.fill" [tooltip]="salesChart.tooltip"
-                            [dataLabels]="salesChart.dataLabels">
+                            [dataLabels]="salesChart.dataLabels" [theme]="salesChart.theme">
                         </apx-chart>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         </div>
 
                         <apx-chart [series]="orderStatusChart.series" [chart]="orderStatusChart.chart"
-                            [labels]="orderStatusChart.labels" [legend]="orderStatusChart.legend">
+                            [labels]="orderStatusChart.labels" [legend]="orderStatusChart.legend" [theme]="orderStatusChart.theme">
                         </apx-chart>
 
                         <!-- Custom Summary -->
@@ -144,7 +144,7 @@
                         </div>
                         <apx-chart [series]="topProductsChart.series" [chart]="topProductsChart.chart"
                             [xaxis]="topProductsChart.xaxis" [plotOptions]="topProductsChart.plotOptions"
-                            [dataLabels]="topProductsChart.dataLabels" [colors]="topProductsChart.colors">
+                            [dataLabels]="topProductsChart.dataLabels" [colors]="topProductsChart.colors" [theme]="topProductsChart.theme">
                         </apx-chart>
                     </div>
                 </div>

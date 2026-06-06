@@ -9,28 +9,30 @@
         font-size: 2.2rem;
         font-weight: 700;
         margin-bottom: 6px;
-        color: #1e293b;
+        color: var(--text-primary);
+        transition: var(--theme-transition);
     }
 
     p {
-        color: #64748b;
+        color: var(--text-secondary);
         margin: 0;
         font-size: 15px;
+        transition: var(--theme-transition);
     }
 }
 
 .settings-card {
-    background: #fff;
+    background: var(--bg-secondary);
     border-radius: 24px;
     padding: 28px;
-    border: 1px solid #f1f5f9;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
     height: 100%;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--theme-transition);
 
     &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.12);
+        box-shadow: var(--card-shadow-hover);
     }
 }
 
@@ -44,13 +46,15 @@
         margin: 0 0 2px 0;
         font-size: 1.35rem;
         font-weight: 700;
-        color: #1e293b;
+        color: var(--text-primary);
+        transition: var(--theme-transition);
     }
 
     p {
         margin: 0;
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 14px;
+        transition: var(--theme-transition);
     }
 }
 
@@ -101,23 +105,24 @@
 .form-label {
     font-weight: 600;
     font-size: 14px;
-    color: #334155;
+    color: var(--text-primary);
     margin-bottom: 8px;
+    transition: var(--theme-transition);
 }
 
 .form-control,
 .form-select {
     height: 52px;
     border-radius: 12px;
-    border: 1px solid #cbd5e1;
-    background-color: #f8fafc;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
     padding: 0 16px;
     font-size: 14px;
-    color: #1e293b;
-    transition: all 0.2s ease;
+    color: var(--input-text);
+    transition: var(--theme-transition);
 
     &:focus {
-        background-color: #fff;
+        background-color: var(--input-bg);
         box-shadow: none;
         border-color: #6366f1;
         box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
@@ -165,18 +170,21 @@
     justify-content: space-between;
     align-items: center;
     padding: 18px 0;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--theme-transition);
 
     h6 {
         margin-bottom: 4px;
         font-weight: 600;
-        color: #1e293b;
+        color: var(--text-primary);
         font-size: 15px;
+        transition: var(--theme-transition);
     }
 
     span {
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 13px;
+        transition: var(--theme-transition);
     }
 }
 
@@ -184,11 +192,12 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    border: 1px solid #f1f5f9;
-    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
     border-radius: 16px;
     padding: 18px;
     margin-bottom: 20px;
+    transition: var(--theme-transition);
 }
 
 .card-logo {
@@ -217,27 +226,30 @@
     h6 {
         margin: 0 0 2px 0;
         font-weight: 600;
-        color: #1e293b;
+        color: var(--text-primary);
         font-size: 15px;
+        transition: var(--theme-transition);
     }
 
     span {
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 13px;
+        transition: var(--theme-transition);
     }
 }
 
 .primary-badge {
-    background: #dcfce7;
-    color: #16a34a;
+    background: var(--badge-success-bg);
+    color: var(--badge-success-text);
     padding: 6px 14px;
     border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
+    transition: var(--theme-transition);
 }
 
 .add-btn {
-    border: 2px dashed #cbd5e1;
+    border: 2px dashed var(--input-border);
     background: transparent;
     color: #6366f1;
     font-weight: 600;
@@ -253,31 +265,33 @@
 }
 
 .action-card {
-    border: 1px solid #f1f5f9;
-    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
     border-radius: 14px;
     padding: 18px 20px;
     margin-bottom: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--theme-transition);
 
     &:hover {
-        background: #fff;
+        background: var(--bg-secondary);
         border-color: #6366f1;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.06);
+        box-shadow: var(--card-shadow-hover);
         transform: translateX(4px);
     }
 
     h6 {
         margin-bottom: 4px;
         font-weight: 600;
-        color: #1e293b;
+        color: var(--text-primary);
         font-size: 15px;
+        transition: var(--theme-transition);
     }
 
     span {
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 13px;
+        transition: var(--theme-transition);
     }
 }
 
@@ -287,8 +301,8 @@
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
-    border-color: #cbd5e1;
-    background-color: #cbd5e1;
+    border-color: var(--input-border);
+    background-color: var(--input-border);
 
     &:checked {
         background-color: #6366f1;

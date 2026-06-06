@@ -1,9 +1,10 @@
 .table-card {
-    background: #fff;
+    background: var(--bg-secondary);
     border-radius: 16px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
     overflow: hidden;
+    transition: var(--theme-transition);
 }
 
 .table-top {
@@ -12,7 +13,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--theme-transition);
 }
 
 .table-title {
@@ -20,13 +22,15 @@
         font-size: 1.25rem;
         font-weight: 700;
         margin-bottom: 2px;
-        color: #0f172a;
+        color: var(--text-primary);
+        transition: var(--theme-transition);
     }
 
     p {
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 0.8125rem;
         margin: 0;
+        transition: var(--theme-transition);
     }
 }
 
@@ -44,8 +48,9 @@
         left: 12px;
         top: 50%;
         transform: translateY(-50%);
-        color: #64748b;
+        color: var(--text-secondary);
         font-size: 14px;
+        transition: var(--theme-transition);
     }
 
     input {
@@ -54,7 +59,10 @@
         padding-left: 34px;
         border-radius: 8px;
         font-size: 13px;
-        border: 1px solid #cbd5e1;
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
+        color: var(--input-text);
+        transition: var(--theme-transition);
 
         &:focus {
             border-color: #4f46e5;
@@ -69,8 +77,11 @@
     height: 34px;
     border-radius: 8px;
     font-size: 13px;
-    border: 1px solid #cbd5e1;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--input-text);
     padding: 0 10px;
+    transition: var(--theme-transition);
 
     &:focus {
         border-color: #4f46e5;
@@ -100,15 +111,28 @@
 
 .table {
     margin: 0;
+    background: transparent;
+    --bs-table-bg: transparent !important;
+    --bs-table-color: var(--text-primary) !important;
+    --bs-table-border-color: var(--border-color) !important;
+    --bs-table-hover-color: var(--text-primary) !important;
+    --bs-table-hover-bg: var(--table-row-hover) !important;
+    --bs-table-striped-color: var(--text-primary) !important;
+    --bs-table-striped-bg: transparent !important;
+    
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
 
     th {
-        background: #f8fafc;
-        color: #64748b;
+        background: var(--table-th-bg) !important;
+        color: var(--text-secondary) !important;
         font-size: 12px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: .5px;
         padding: 12px 16px;
+        border-color: var(--border-color) !important;
+        transition: var(--theme-transition);
 
         &:first-child {
             padding-left: 20px;
@@ -123,7 +147,10 @@
         padding: 10px 16px;
         vertical-align: middle;
         font-size: 13px;
-        color: #334155;
+        color: var(--text-primary) !important;
+        border-color: var(--border-color) !important;
+        background: transparent !important;
+        transition: var(--theme-transition);
 
         &:first-child {
             padding-left: 20px;
@@ -133,6 +160,10 @@
             padding-right: 20px;
             white-space: nowrap;
         }
+    }
+
+    tbody tr:hover td {
+        background-color: var(--table-row-hover) !important;
     }
 }
 
@@ -146,10 +177,11 @@
     border: none;
     background: transparent;
     font-size: 16px;
-    color: #64748b;
+    color: var(--text-secondary);
     padding: 2px 4px;
     display: inline-flex;
     align-items: center;
+    transition: var(--theme-transition);
 
     &:hover {
         color: #4f46e5;
@@ -164,23 +196,27 @@
 }
 
 .success {
-    background: #dcfce7;
-    color: #16a34a;
+    background: var(--badge-success-bg);
+    color: var(--badge-success-text);
+    transition: var(--theme-transition);
 }
 
 .primary {
-    background: #e0e7ff;
-    color: #4f46e5;
+    background: var(--badge-primary-bg);
+    color: var(--badge-primary-text);
+    transition: var(--theme-transition);
 }
 
 .warning {
-    background: #fef3c7;
-    color: #ca8a04;
+    background: var(--badge-warning-bg);
+    color: var(--badge-warning-text);
+    transition: var(--theme-transition);
 }
 
 .danger {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--badge-danger-bg);
+    color: var(--badge-danger-text);
+    transition: var(--theme-transition);
 }
 
 .table-footer {
@@ -190,13 +226,15 @@
     justify-content: space-between;
     align-items: center;
 
-    border-top: 1px solid #e5e7eb;
-    background: #f8fafc;
+    border-top: 1px solid var(--border-color);
+    background: var(--table-footer-bg);
+    transition: var(--theme-transition);
 
     p {
         margin: 0;
         font-size: 13px;
-        color: #64748b;
+        color: var(--text-secondary);
+        transition: var(--theme-transition);
     }
 }
 
@@ -210,12 +248,13 @@
         font-size: 12px;
         font-weight: 500;
         transition: all 0.2s;
-        border: 1px solid #cbd5e1;
-        background: white;
-        color: #334155;
+        border: 1px solid var(--input-border);
+        background: var(--input-bg);
+        color: var(--input-text);
+        transition: var(--theme-transition);
 
         &:hover:not(:disabled):not(.active) {
-            background: #f1f5f9;
+            background: var(--bg-tertiary);
         }
 
         &:disabled {
@@ -245,13 +284,14 @@
         height: 5px;
     }
     &::-webkit-scrollbar-track {
-        background: #f1f5f9;
+        background: var(--bg-primary);
     }
     &::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
+        background: var(--border-color);
         border-radius: 3px;
+        transition: var(--theme-transition);
         &:hover {
-            background: #94a3b8;
+            background: var(--text-muted);
         }
     }
 }
