@@ -1,0 +1,178 @@
+<div class="table-card">
+ 
+    <!-- Header -->
+ 
+    <div class="table-top">
+ 
+        <div class="table-title">
+ 
+            <h3>{{ title }}</h3>
+            <p>{{ subtitle }}</p>
+ 
+        </div>
+ 
+        <div class="table-filters">
+ 
+            <!-- Search -->
+ 
+            <div
+                *ngIf="showSearch"
+                class="search-box">
+ 
+                <i class="ri-search-line"></i>
+ 
+                <input
+                    type="text"
+                    class="form-control"
+                    [placeholder]="searchPlaceholder"
+                    (input)="onSearch($event)">
+ 
+            </div>
+ 
+            <!-- Dropdown -->
+ 
+            <select
+                *ngIf="showFilter"
+                class="form-select filter-select"
+                (change)="onFilter($event)">
+ 
+                <option
+                    *ngFor="let option of filterOptions">
+ 
+                    {{ option }}
+ 
+                </option>
+ 
+            </select>
+ 
+            <!-- Export -->
+ 
+            <button
+                *ngIf="showExport"
+                class="btn export-btn">
+ 
+                <i class="ri-download-line"></i>
+ 
+                {{ exportText }}
+ 
+            </button>
+ 
+        </div>
+ 
+    </div>
+ 
+    <!-- Table -->
+ 
+    <div class="table-responsive">
+ 
+        <table class="table align-middle">
+ 
+            <thead>
+ 
+                <tr>
+ 
+                    <th *ngFor="let column of columns">
+                        {{ column.label }}
+                    </th>
+ 
+                    <th *ngIf="actions.length">
+                        Actions
+                    </th>
+ 
+                </tr>
+ 
+            </thead>
+ 
+            <tbody>
+ 
+                <tr *ngFor="let row of paginatedData">
+ 
+                    <td *ngFor="let column of columns">
+ 
+                        <ng-container
+                            *ngIf="row[column.key]?.label; else normalValue">
+ 
+                            <span
+                                class="status-badge"
+                                [ngClass]="row[column.key].class">
+ 
+                                {{ row[column.key].label }}
+ 
+                            </span>
+ 
+                        </ng-container>
+ 
+                        <ng-template #normalValue>
+ 
+                            {{ row[column.key] }}
+ 
+                        </ng-template>
+ 
+                    </td>
+ 
+                    <!-- Actions -->
+ 
+                    <td *ngIf="actions.length">
+ 
+                        <div class="action-group">
+ 
+                            <button
+                                *ngFor="let action of actions"
+                                class="action-btn">
+ 
+                                <i [class]="action.icon"></i>
+ 
+                            </button>
+ 
+                        </div>
+ 
+                    </td>
+ 
+                </tr>
+ 
+            </tbody>
+ 
+        </table>
+ 
+    </div>
+ 
+    <!-- Footer -->
+ 
+    <div
+        *ngIf="showPagination"
+        class="table-footer">
+ 
+        <p>
+            Showing {{ startIndex }} - {{ endIndex }}
+            of {{ filteredData.length }} records
+        </p>
+ 
+        <div class="pagination-wrapper">
+ 
+            <button 
+                class="btn btn-light"
+                [disabled]="currentPage === 1"
+                (click)="prevPage()">
+                Previous
+            </button>
+ 
+            <button 
+                *ngFor="let page of pages"
+                class="btn"
+                [class.active]="currentPage === page"
+                (click)="setPage(page)">
+                {{ page }}
+            </button>
+ 
+            <button 
+                class="btn btn-light"
+                [disabled]="currentPage === totalPages"
+                (click)="nextPage()">
+                Next
+            </button>
+ 
+        </div>
+ 
+    </div>
+ 
+</div>

@@ -1,0 +1,103 @@
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    height: 100vh;
+    overflow: hidden;
+
+    background: linear-gradient(180deg,
+            #4f46e5 0%,
+            #7c3aed 55%,
+            #8b5cf6 100%);
+
+    color: white;
+}
+
+.logo {
+    padding: 32px 28px;
+
+    h2 {
+        font-size: 38px;
+        font-weight: 700;
+        margin: 0;
+    }
+}
+
+.logo-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #020617;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.brand-name {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #111827;
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 10px 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-wrap: nowrap !important;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .4);
+    border-radius: 10px;
+}
+
+.nav-link {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 12px;
+    padding: 0 20px;
+
+    color: white;
+    border-radius: 18px;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    transition: all .3s ease;
+
+    i {
+        font-size: 24px;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, .12);
+    }
+}
+
+.active {
+    background: white !important;
+    color: #4f46e5 !important;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+}
+
+.logout-section {
+    padding: 18px;
+    border-top: 1px solid rgba(255, 255, 255, .15);
+}
+
+.logout-btn {
+    cursor: pointer;
+}

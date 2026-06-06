@@ -1,0 +1,176 @@
+<div class="dashboard">
+    
+    <!-- Page Header -->
+    <div class="page-header d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Overview Dashboard</h2>
+            <p>Welcome back, John! Here's what's happening with your store today.</p>
+        </div>
+        <div class="d-flex gap-3 align-items-center">
+            <span class="date-badge">
+                <i class="ri-calendar-line me-2"></i>
+                {{ currentDate || 'June 6, 2026' }}
+            </span>
+            <button class="btn btn-pdf" (click)="downloadPdf()" [disabled]="isExporting">
+                <i *ngIf="!isExporting" class="ri-file-pdf-2-line me-2"></i>
+                <i *ngIf="isExporting" class="ri-loader-4-line me-2 spin"></i>
+                {{ isExporting ? 'Exporting...' : 'Export PDF' }}
+            </button>
+        </div>
+    </div>
+
+    <div #dashboardContent class="dashboard-container">
+        
+        <!-- Stats Cards -->
+        <section class="cards mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let card of dashboard">
+                    <app-card [card]="card">
+                    </app-card>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts mb-4">
+            <div class="row g-4">
+
+                <!-- Sales Analytics -->
+                <div class="col-lg-8">
+                    <div class="chart-card h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-4" style="min-height: 58px;">
+                            <div>
+                                <h3 class="m-0">Sales Analytics</h3>
+                                <p class="m-0">Monthly revenue and order trends</p>
+                            </div>
+
+                            <select class="form-select w-auto select-period" (change)="onSalesPeriodChange($event)">
+                                <option>Last 6 Months</option>
+                                <option>Last 3 Months</option>
+                                <option>Last 30 Days</option>
+                                <option>Last Year</option>
+                            </select>
+                        </div>
+
+                        <apx-chart [series]="salesChart.series" [chart]="salesChart.chart" [xaxis]="salesChart.xaxis"
+                            [stroke]="salesChart.stroke" [fill]="salesChart.fill" [tooltip]="salesChart.tooltip"
+                            [dataLabels]="salesChart.dataLabels">
+                        </apx-chart>
+                    </div>
+                </div>
+
+                <!-- Order Status -->
+                <div class="col-lg-4">
+                    <div class="chart-card h-100">
+                        <div class="mb-4"
+                            style="min-height: 58px; display: flex; flex-direction: column; justify-content: center;">
+                            <h3 class="m-0">Order Status Distribution</h3>
+                            <p class="m-0">Current month order breakdown</p>
+                        </div>
+
+                        <apx-chart [series]="orderStatusChart.series" [chart]="orderStatusChart.chart"
+                            [labels]="orderStatusChart.labels" [legend]="orderStatusChart.legend">
+                        </apx-chart>
+
+                        <!-- Custom Summary -->
+                        <div class="row mt-4">
+
+                            <div class="col-6 mb-3">
+                                <div class="status-item">
+                                    <span class="dot completed"></span>
+                                    <div>
+                                        <small>Completed</small>
+                                        <h5>1,240</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="status-item">
+                                    <span class="dot processing"></span>
+                                    <div>
+                                        <small>Processing</small>
+                                        <h5>340</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="status-item">
+                                    <span class="dot pending"></span>
+                                    <div>
+                                        <small>Pending</small>
+                                        <h5>180</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="status-item">
+                                    <span class="dot cancelled"></span>
+                                    <div>
+                                        <small>Cancelled</small>
+                                        <h5>45</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Top Selling Products -->
+        <section class="top-products mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="chart-card">
+                        <div class="chart-header d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h3 class="m-0">Top Selling Products</h3>
+                                <p class="m-0">Best performers this month</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-chart-layout" [class.active]="!isHorizontalBar" (click)="toggleChartDirection(false)" title="Vertical View">
+                                    <i class="ri-bar-chart-fill"></i>
+                                </button>
+                                <button class="btn btn-chart-layout" [class.active]="isHorizontalBar" (click)="toggleChartDirection(true)" title="Horizontal View">
+                                    <i class="ri-bar-chart-horizontal-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <apx-chart [series]="topProductsChart.series" [chart]="topProductsChart.chart"
+                            [xaxis]="topProductsChart.xaxis" [plotOptions]="topProductsChart.plotOptions"
+                            [dataLabels]="topProductsChart.dataLabels" [colors]="topProductsChart.colors">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Orders (Now included in PDF export wrapper) -->
+        <section class="recent-orders">
+            <div class="row">
+                <div class="col-12">
+                    <app-table 
+                        title="Recent Orders" 
+                        subtitle="Latest customer orders" 
+                        [columns]="recentOrdersColumns"
+                        [data]="OrdersData" 
+                        [actions]="actions"
+                        [showSearch]="true"
+                        searchPlaceholder="Search order, customer, or product..."
+                        [showFilter]="true"
+                        [filterOptions]="['All', 'Shipped', 'Processing', 'Pending', 'Delivered']"
+                        [showPagination]="true"
+                        [pageSize]="4">
+                    </app-table>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+</div>

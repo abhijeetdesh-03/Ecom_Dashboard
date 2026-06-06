@@ -1,0 +1,61 @@
+<div [ngSwitch]="card.variant" class="h-100">
+
+    <!-- Stats Card -->
+    <div *ngSwitchCase="'stats'" class="stats-card-layout" [style.--glow-color]="card.iconColor">
+
+        <div class="d-flex justify-content-between align-items-start">
+
+            <div>
+                <h6>{{ card.title }}</h6>
+
+                <h2>{{ card.value }}</h2>
+
+                <div *ngIf="card.trend" class="trend" [ngClass]="card.trend.type">
+
+                    <i [class]="
+              card.trend.type === 'up'
+                ? 'ri-arrow-right-up-line'
+                : 'ri-arrow-right-down-line'
+            ">
+                    </i>
+
+                    {{ card.trend.value }}
+                </div>
+            </div>
+
+            <div class="icon-box" [style.background]="card.iconBg" [style.color]="card.iconColor">
+
+                <i [class]="card.icon"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Existing Layout -->
+    <div *ngSwitchDefault class="dashboard-card" [ngClass]="card.variant" [style.background]="card.cardBg" [style.color]="card.textColor">
+
+        <div *ngIf="card.icon" class="icon-box" [style.background]="card.iconBg" [style.color]="card.iconColor">
+
+            <i [class]="card.icon"></i>
+
+        </div>
+
+        <h6>{{ card.title }}</h6>
+
+        <h2>{{ card.value }}</h2>
+
+        <p *ngIf="card.subtitle">
+            {{ card.subtitle }}
+        </p>
+
+        <div *ngIf="card.trend" class="trend" [ngClass]="card.trend.type">
+
+            {{ card.trend.value }}
+
+        </div>
+
+    </div>
+
+</div>
