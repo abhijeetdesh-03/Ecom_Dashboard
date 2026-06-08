@@ -1,23 +1,35 @@
 .settings-page {
     padding: 24px;
-}
 
-.page-header {
-    margin-bottom: 28px;
+    // Page Header & Controls
+    .page-header {
+        margin-bottom: 28px;
 
-    h2 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 6px;
-        color: var(--text-primary);
-        transition: var(--theme-transition);
-    }
+        h2 {
+            display: inline-block;
+            font-size: 1.625rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
 
-    p {
-        color: var(--text-secondary);
-        margin: 0;
-        font-size: 15px;
-        transition: var(--theme-transition);
+            ::ng-deep [data-theme='dark'] & {
+                background: linear-gradient(135deg, #e0e7ff 0%, #a5b4fc 100%) !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+            }
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin: 4px 0 0 0;
+            transition: var(--theme-transition);
+        }
     }
 }
 

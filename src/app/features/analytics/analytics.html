@@ -1,13 +1,224 @@
 <div class="analytics">
-    <section class="cards">
+    
+    <!-- Page Header -->
+    <div class="page-header d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Analytics Overview</h2>
+            <p>Comprehensive insights into your business performance</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <section class="cards mb-4">
         <div class="row g-4">
-            <div class="col-lg-3 col-md-6" *ngFor="let card of analytics">
+            <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let card of analytics">
                 <app-card [card]="card">
                 </app-card>
             </div>
         </div>
     </section>
-    <section class="charts">
 
+    <!-- Charts Section -->
+    <section class="charts mb-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="chart-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4" style="min-height: 58px;">
+                        <div>
+                            <h3 class="m-0">Revenue & Orders Trend</h3>
+                            <p class="m-0">Track your sales performance over time</p>
+                        </div>
+
+                        <select class="form-select w-auto select-period" (change)="onSalesPeriodChange($event)">
+                            <option>Last 6 Months</option>
+                            <option>Last 3 Months</option>
+                            <option>Last 30 Days</option>
+                            <option>Last Year</option>
+                        </select>
+                    </div>
+
+                    <apx-chart 
+                        [series]="salesChart.series" 
+                        [chart]="salesChart.chart" 
+                        [xaxis]="salesChart.xaxis"
+                        [stroke]="salesChart.stroke" 
+                        [fill]="salesChart.fill" 
+                        [tooltip]="salesChart.tooltip"
+                        [dataLabels]="salesChart.dataLabels" 
+                        [theme]="salesChart.theme"
+                        [colors]="salesChart.colors">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category & Traffic Charts -->
+    <section class="mb-4">
+        <div class="row g-4">
+            
+            <!-- Revenue by Category -->
+            <div class="col-lg-8">
+                <div class="chart-card h-100">
+                    <div class="mb-4">
+                        <h3 class="m-0">Revenue by Category</h3>
+                    </div>
+                    <apx-chart
+                        [series]="categoryChart.series"
+                        [chart]="categoryChart.chart"
+                        [xaxis]="categoryChart.xaxis"
+                        [plotOptions]="categoryChart.plotOptions"
+                        [dataLabels]="categoryChart.dataLabels"
+                        [colors]="categoryChart.colors"
+                        [grid]="categoryChart.grid"
+                        [tooltip]="categoryChart.tooltip"
+                        [theme]="categoryChart.theme">
+                    </apx-chart>
+                </div>
+            </div>
+
+            <!-- Traffic Sources -->
+            <div class="col-lg-4">
+                <div class="chart-card h-100">
+                    <div class="mb-4">
+                        <h3 class="m-0">Traffic Sources</h3>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center" style="min-height: 220px;">
+                        <apx-chart
+                            [series]="trafficChart.series"
+                            [chart]="trafficChart.chart"
+                            [labels]="trafficChart.labels"
+                            [colors]="trafficChart.colors"
+                            [legend]="trafficChart.legend"
+                            [dataLabels]="trafficChart.dataLabels"
+                            [theme]="trafficChart.theme">
+                        </apx-chart>
+                    </div>
+
+                    <!-- Custom Legend Grid -->
+                    <div class="row mt-3 custom-legend-grid">
+                        <div class="col-6 mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="legend-dot bg-direct"></span>
+                                <div>
+                                    <span class="legend-label d-block">Direct</span>
+                                    <span class="legend-value">4,200</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="legend-dot bg-search"></span>
+                                <div>
+                                    <span class="legend-label d-block">Search</span>
+                                    <span class="legend-value">3,400</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="legend-dot bg-social"></span>
+                                <div>
+                                    <span class="legend-label d-block">Social</span>
+                                    <span class="legend-value">2,800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="legend-dot bg-referral"></span>
+                                <div>
+                                    <span class="legend-label d-block">Referral</span>
+                                    <span class="legend-value">1,600</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Metric Breakdown Section -->
+    <section class="mb-4">
+        <div class="row g-4">
+            
+            <!-- Average Order Value -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="metric-detail-card h-100">
+                    <h4 class="metric-title">Average Order Value</h4>
+                    <div class="metric-value-container text-center py-4">
+                        <h2 class="metric-value text-aov">$89.50</h2>
+                        <p class="metric-subtitle">+$5.20 from last month</p>
+                    </div>
+                    <div class="metric-list">
+                        <div class="metric-list-item d-flex justify-content-between py-2">
+                            <span class="item-label">Highest</span>
+                            <span class="item-value">$420.00</span>
+                        </div>
+                        <div class="metric-list-item d-flex justify-content-between py-2">
+                            <span class="item-label">Lowest</span>
+                            <span class="item-value">$12.50</span>
+                        </div>
+                        <div class="metric-list-item d-flex justify-content-between py-2 border-0">
+                            <span class="item-label">Median</span>
+                            <span class="item-value">$75.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Retention -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="metric-detail-card h-100">
+                    <h4 class="metric-title">Customer Retention</h4>
+                    <div class="metric-value-container text-center py-4">
+                        <h2 class="metric-value text-retention">68%</h2>
+                        <p class="metric-subtitle">Returning customers</p>
+                    </div>
+                    <div class="metric-list">
+                        <div class="metric-list-item d-flex justify-content-between py-2">
+                            <span class="item-label">First Time</span>
+                            <span class="item-value">32%</span>
+                        </div>
+                        <div class="metric-list-item d-flex justify-content-between py-2">
+                            <span class="item-label">Repeat</span>
+                            <span class="item-value">68%</span>
+                        </div>
+                        <div class="metric-list-item d-flex justify-content-between py-2 border-0">
+                            <span class="item-label">Churn Rate</span>
+                            <span class="item-value text-danger font-weight-bold">8.5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Velocity -->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="metric-detail-card h-100">
+                    <h4 class="metric-title">Sales Velocity</h4>
+                    <div class="metric-value-container text-center py-4">
+                        <h2 class="metric-value text-velocity">12.5</h2>
+                        <p class="metric-subtitle">Orders per day</p>
+                    </div>
+                    <div class="metric-list">
+                        <div class="metric-list-item d-flex justify-content-between py-2">
+                            <span class="item-label">Peak Day</span>
+                            <span class="item-value">Thursday</span>
+                        </div>
+                        <div class="metric-list-item d-flex justify-content-between py-2">
+                            <span class="item-label">Peak Hour</span>
+                            <span class="item-value">2-3 PM</span>
+                        </div>
+                        <div class="metric-list-item d-flex justify-content-between py-2 border-0">
+                            <span class="item-label">Avg Processing</span>
+                            <span class="item-value">2.3 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 </div>
